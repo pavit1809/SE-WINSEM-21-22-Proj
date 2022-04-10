@@ -1,0 +1,43 @@
+{
+  "name": "se-winsem-21-22-proj",
+  "version": "1.0.0",
+  "description": "Web Application allowing users to upload documents and assign ACL's to them to control who can view them with a amazing UX.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "export NODE_ENV=development && nodemon app.js",
+    "win-dev": "set NODE_ENV=development && nodemon app.js",
+    "start": "node app.js",
+    "check-linting": "npx eslint src app.js",
+    "fix-linting": "npx eslint src app.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavit1809/SE-WINSEM-21-22-Proj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pavit1809/SE-WINSEM-21-22-Proj/issues"
+  },
+  "homepage": "https://github.com/pavit1809/SE-WINSEM-21-22-Proj#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "chalk": "^4.1.2",
+    "compression": "^1.7.4",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "nodemon": "^2.0.15"
+  }
+}
