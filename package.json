@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web Application allowing users to upload documents and assign ACL's to them to control who can view them with a amazing UX.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "dev": "export NODE_ENV=development && nodemon app.js",
     "win-dev": "set NODE_ENV=development && nodemon app.js",
@@ -21,10 +22,14 @@
   },
   "homepage": "https://github.com/pavit1809/SE-WINSEM-21-22-Proj#readme",
   "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.1",
     "compression": "^1.7.4",
     "config": "^3.3.7",
     "cors": "^2.8.5",

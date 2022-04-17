@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 dotenv.config();
 
 let DbUri = "mongodb://127.0.0.1:27017/SE-Project";
 
-const commonUtils = require("../../src/lib/common_utils");
+import {successLog, errorLog} from "../../src/lib/common_utils.js";
+
 
 const dbProperties = {
   useNewUrlParser: true,
@@ -13,8 +14,8 @@ const dbProperties = {
 };
 
 mongoose.connect(DbUri, dbProperties).then(()=>{
-  commonUtils.successLog("Connection to Mongo successful");
+  successLog("Connection to Mongo successful");
 }).catch((err) => {
-  commonUtils.errorLog(err.message);
+  errorLog(err.message);
   process.exit();
 });

@@ -1,9 +1,7 @@
-const process = require("process");
-
+import process from "process";
 
 // Internal Imports
-const {logger} = require("../../src/lib/common_utils");
-
+import {logger} from "../../src/lib/common_utils.js";
 
 process.on("unhandledRejection", (reason, promise) => {
   logger(`Unhandled Rejection at ${promise} due to ${reason}`);

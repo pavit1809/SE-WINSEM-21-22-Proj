@@ -1,1 +1,1 @@
-require("./unhandled_rejection");
+import "./unhandled_rejection.js";
