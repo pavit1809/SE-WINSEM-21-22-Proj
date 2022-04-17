@@ -1,10 +1,8 @@
 import chalk from "chalk";
 
-export const responseUtil = (status, data, message) => {
+export const errorResponse = (message) => {
   return {
-    status: status,
-    data: data,
-    message: message
+    message: message,
   };
 };
 
@@ -36,4 +34,13 @@ export const generateError = (status, message) => {
   let err = new Error (message);
   err.status = status;
   return err;
+};
+
+export const genCode = (n = 10) => {
+  n = n || 16;
+  let result = "";
+  while (n--){
+    result += Math.floor(Math.random() * 16).toString(16).toUpperCase();
+  }
+  return result;
 };

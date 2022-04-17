@@ -43,7 +43,6 @@
     "eqeqeq": ["error", "smart"],
     "eol-last": "error",
     "camelcase": "error",
-    "prefer-arrow-callback": "warn",
     "no-self-assign": "off"
   }
 }
