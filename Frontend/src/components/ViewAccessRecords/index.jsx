@@ -46,7 +46,7 @@ const ViewAccessRecords = ({ handleView }) => {
         console.log("err", err);
       });
   };
-  const openPDF = async (downloadLink,id) => {
+  const openPDF = async (downloadLink, id) => {
     //Call API for feeding logs
     const userDetails = { role, token, id };
     await Axios.post(`${ROOT_URL}/document/fetch`, userDetails)
@@ -109,7 +109,7 @@ const ViewAccessRecords = ({ handleView }) => {
         const { downloadLink, id } = record || {};
         return (
           <Space size="middle">
-            <a onClick={() => openPDF(downloadLink,id)}>
+            <a onClick={() => openPDF(downloadLink, id)}>
               <Tooltip style={{ cursor: "pointer" }} title="View Record">
                 <FundViewOutlined />
               </Tooltip>
@@ -145,8 +145,15 @@ const ViewAccessRecords = ({ handleView }) => {
         visible={isModalVisible}
         footer={null}
         onCancel={() => setModalVisible(false)}
+        width={600}
       >
-        <object data={currentLink}></object>
+        <embed
+          src={currentLink + "#toolbar=0"}
+          type="application/pdf"
+          height={700}
+          width={500}
+        />
+        {/* <object data={`${currentLink}#toolbar=0}`} width={1200} height={1200}></object> */}
         {/* <Document file={{url:url}} onContextMenu={(e) => e.preventDefault()}>
           <Page pageNumber={1} />
         </Document> */}
