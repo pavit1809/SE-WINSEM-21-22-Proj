@@ -1,16 +1,18 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import jwt from "jsonwebtoken";
 
 
 // Internal Importa
-import { genCode } from "../lib/common_utils.js";
+import { generateError } from "../lib/common_utils.js";
 
 
 const DoctorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -32,10 +34,7 @@ const DoctorSchema = new mongoose.Schema({
     unique: true,
   },
   certifications: {
-    type: [{
-      proofOf: String,
-      docId: mongoose.Schema.Types.ObjectId
-    }],
+    type: [mongoose.Schema.Types.ObjectId],
     required: true
   },
   uniqueKey: {
@@ -43,30 +42,49 @@ const DoctorSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  profilePictureUrl: {
+    type: String,
+  },
+  designation: {
+    type: String,
+  },
+  token: {
+    type: String
+  }
 }, {
   timestamps: true
 });
 
+DoctorSchema.methods.generateToken = async function() {
+  const user = this;
+  const payload = {
+    _id: user._id,
+  };
+  const token = jwt.sign(payload, process.env.CompanySecret);
+  user.token = token;
+  await user.save();
+  return token;
+};
+
 
 DoctorSchema.statics.findByCredentials = async (email, password) => {
-  const doctor = await Doctor.findOne({
+  const user = await Doctor.findOne({
     email: email,
   });
-  if (!doctor) {
-    throw new Error("User not found");
+  if (!user) {
+    throw generateError(404, "User not found");
   }
-  const passwordMatched = await bcrypt.compare(password, doctor.password);
+  const passwordMatched = await bcrypt.compare(password, user.password);
   if (!passwordMatched) {
-    return "Password Incorrect";
+    throw generateError(401, "Password Incorrect");
   }
-  return doctor;
+  return user;
 };
 
 
 DoctorSchema.pre("save", async function(next) {
   if (this.isModified("password")) {
     const hash = await bcrypt.hash(this.password, 8);
-    this.uniqueKey = genCode(10);
     this.password = hash;
   }
   next();

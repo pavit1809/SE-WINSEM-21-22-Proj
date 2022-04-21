@@ -19,6 +19,20 @@ export const logger = (message) => {
 };
 
 
+export const getOtp = () => {
+  let val = Math.floor(Math.random() * 1000000);
+  if (val.toString().length === 5) {
+    val *= 10;
+  }
+  return val;
+};
+
+
+export const getRandomNumber = (min, max) => {
+  return parseInt(Math.random() * (max - min + 1)) + min;
+};
+
+
 // This method returns the filtered object containing only the allowedKeys
 export const filterObjectByAllowedKeys = (current, allowedKeys) => {
   let filtered = {};

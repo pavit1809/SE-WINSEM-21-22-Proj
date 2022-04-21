@@ -8,18 +8,31 @@ const DocumentSchema = new mongoose.Schema({
   },
   downloadLink: {
     type: String,
+    required: true,
   },
   aclId: {
     type: String,
-    required: true,
   },
   ownerId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required: true,
+  },
+  category: {
+    type: String,
+  },
+  deleted: {
+    type: Boolean,
+    default: false,
   }
 }, {
   timestamps: true
 });
+
+DocumentSchema.methods.acl = async function(){
+  const acl = await Acl.findOne({documentId: this._id});
+  return acl;
+};
+
 
 DocumentSchema.post("save", async function(document, next) {
   const aclObject = {

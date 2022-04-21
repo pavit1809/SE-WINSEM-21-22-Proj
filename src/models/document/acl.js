@@ -7,7 +7,7 @@ const AclSchema = new mongoose.Schema({
     required: true,
   },
   doctorIds: {
-    type: [mongoose.Schema.Types.ObjectId],
+    type: [String],
     default: [],
   },
 }, {
