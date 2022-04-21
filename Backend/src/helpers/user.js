@@ -109,3 +109,20 @@ export const addUserToAcl = async (doctorId, documentId) => {
   acl.doctorIds.push(doctorId);
   await acl.save();
 };
+
+
+export const getDocumentAccessHistory = async (documentId) => {
+  const document = await Document.findById(documentId);
+  let accessList = [];
+  for (let i = 0;i < document.accessHistory.length;i++)
+  {
+    const doctor = await Doctor.findById(document.accessHistory[i].doctorId);
+    accessList.push({
+      name: doctor.name,
+      email: doctor.email,
+      profilePictureUrl: doctor.profilePictureUrl,
+      accessTime: document.accessHistory[i].accessTime.toLocaleString()
+    });
+  }
+  return accessList;
+};

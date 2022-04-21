@@ -11,6 +11,7 @@ import {
   deleteUserFromAcl,
   fetchDoctorListToAddToAcl,
   addUserToAcl,
+  getDocumentAccessHistory
 } from "../helpers/user.js";
 import { auth } from "../middleware/user_auth.js";
 
@@ -86,6 +87,19 @@ router.post("/document/acl/add-user", auth, async (req, res) => {
     const {id: doctorId, documentId} = req.body;
     await addUserToAcl(doctorId, documentId);
     res.status(responseCodes.SUCCESS_CODE).send({});
+  } catch (err){
+    console.log(err);
+    const {status = responseCodes.INTERNAL_SERVER_ERROR_CODE, message = "Internal Server Occured"} = err;
+    res.status(status).send(errorResponse(message));
+  }
+});
+
+
+router.post("/document/history", auth, async (req, res) => {
+  try {
+    const {id: documentId} = req.body;
+    const history = await getDocumentAccessHistory(documentId);
+    res.status(responseCodes.SUCCESS_CODE).send(history);
   } catch (err){
     console.log(err);
     const {status = responseCodes.INTERNAL_SERVER_ERROR_CODE, message = "Internal Server Occured"} = err;

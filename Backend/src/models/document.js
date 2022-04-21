@@ -23,6 +23,19 @@ const DocumentSchema = new mongoose.Schema({
   deleted: {
     type: Boolean,
     default: false,
+  },
+  accessHistory: {
+    type: [{
+      doctorId: {
+        type: String,
+        required: true
+      },
+      accessTime: {
+        type: Date,
+        default: Date.now
+      }
+    }],
+    default: []
   }
 }, {
   timestamps: true
