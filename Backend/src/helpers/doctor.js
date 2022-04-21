@@ -46,7 +46,7 @@ export const fetchValidDocuments = async (user) => {
     const acl = Acl.find({documentId: documents[i]._id, doctorIds: userId});
     if (acl)
     {
-      const clientUser = await User.find(document.ownerId);
+      const clientUser = await User.findById(document.ownerId);
       validDocuments.push({
         id: document._id,
         name: document.name,

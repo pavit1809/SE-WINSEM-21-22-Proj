@@ -36,3 +36,14 @@ export const uploadFile = async (file, user, category) => {
   await document.save();
   return document;
 };
+
+
+
+export const createHistory = async (documentId, currentUser) => {
+  const document = await Document.findById(documentId);
+  document.accessHistory.push({
+    doctorId: currentUser._id,
+    accessTime: Date.now()
+  });
+  await document.save();
+};
