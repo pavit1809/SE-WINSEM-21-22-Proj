@@ -12,7 +12,7 @@ import "antd/dist/antd.css";
 import DoctorHome from "./pages/Doctor";
 
 /* Enter URL without ending slash */
-export const ROOT_URL = "https://f534-182-79-4-251.ngrok.io";
+export const ROOT_URL = "https://81d6-182-79-4-251.ngrok.io";
 
 function App() {
   return (

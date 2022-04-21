@@ -21,7 +21,6 @@ const EditAccess = ({ handleView }) => {
   const [editRecordData, setRecords] = useState([]);
   const [addUserDetails, setUsers] = useState([]);
   const [addedUser, setAddedUser] = useState([]);
-  const [isModalVisible, setModalVisible] = useState(false);
   const { role, token } = useSelector(state => state.userDetails);
   const { id: documentId } = useSelector(state => state.recordDetails);
   const dispatch = useDispatch();

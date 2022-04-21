@@ -64,27 +64,11 @@ const ViewRecords = ({ handleView }) => {
   };
 
   const viewActivity = async record => {
-    const viewDetails = { role, token, id: record?.id };
-    // await Axios.post(`${ROOT_URL}/user/documents`, viewDetails)
-    //   .then(res => {
-    //     if (res.status === 200 || res.status === 201) {
-    //       setData(res.data);
-    //       notification.success({
-    //         message: `Success`,
-    //         description: res.data.message,
-    //         placement: 'bottomLeft',
-    //       });
-    //     } else {
-    //       notification.error({
-    //         message: `Error`,
-    //         description: res.data.message,
-    //         placement: 'bottomLeft',
-    //       });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log('err', err);
-    //   });
+    dispatch({
+      type: actionTypes.CHANGE_RECORD,
+      recordDetails: record,
+    });
+    handleView('view');
   };
 
   const editAccess = async record => {
@@ -159,8 +143,8 @@ const ViewRecords = ({ handleView }) => {
   return (
     <>
       <DetailsSection>
-        <div class="description">
-          <div class="title">View Records</div>
+        <div className="description">
+          <div className="title">View Records</div>
           <div className="price">
             We provide a secure way to provide access to others for viewing your
             records privately!
