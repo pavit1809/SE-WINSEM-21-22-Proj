@@ -16,6 +16,8 @@ import {
   DashboardOutlined,
 } from '@ant-design/icons';
 import { CustomLayout, DetailsSection, Heading, ImgWrapper } from './styles';
+import ViewAccessRecords from '../../components/ViewAccessRecords';
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -41,10 +43,6 @@ const DoctorHome = () => {
 
   const handleView = index => {
     // Handle content show if there is one more level of viewing the records
-  };
-  const handleAdd = values => {
-    //API to add the record
-    message.success('Select View records to view your added record.');
   };
 
   const logout = () => {
@@ -75,9 +73,6 @@ const DoctorHome = () => {
             </Menu.Item>
             <Menu.Item key="view" icon={<FolderViewOutlined />}>
               View Records
-            </Menu.Item>
-            <Menu.Item key="add" icon={<FolderAddOutlined />}>
-              Add Records
             </Menu.Item>
             <Menu.Item key="logout" icon={<LogoutOutlined />}>
               Logout
@@ -127,27 +122,9 @@ const DoctorHome = () => {
                 padding: 24,
                 margin: 0,
                 minHeight: 280,
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
               }}
             >
-              View Records
-            </Content>
-          )}
-          {selectionKey === 'add' && (
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-              }}
-            >
-              Add Records
+              <ViewAccessRecords handleView={handleView}/>
             </Content>
           )}
         </Layout>

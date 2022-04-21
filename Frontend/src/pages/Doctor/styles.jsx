@@ -61,18 +61,19 @@ export const DetailsSection = styled.div`
     width: 30vw;
   }
   .title {
-    margin: 0 5vw 0 0;
-    font-size: 3.5vh;
+    margin: 0 5vw 6vh 0;
+    font-size: 4.5vh;
     color: #407fc3;
     font-weight: bold;
   }
   .content {
     margin-top: 10px;
-    font-size: 1.5vh;
+    margin: 0 0 2vh 0;
+    font-size: 2.5vh;
   }
   .price {
     margin-top: 10px;
-    font-size: 2vh;
+    font-size: 3vh;
     color: #407fc3;
     font-weight: bold;
   }

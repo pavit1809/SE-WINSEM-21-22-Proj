@@ -19,6 +19,7 @@ import { CustomLayout, DetailsSection, Heading, ImgWrapper } from './styles';
 import AddRecords from '../../components/AddRecords';
 import ViewRecords from '../../components/ViewRecords';
 import EditAccess from '../../components/EditAccess';
+import ViewActivity from '../../components/ViewActivity';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -202,6 +203,19 @@ const UserHome = () => {
               }}
             >
               <EditAccess handleView={handleView} />
+            </Content>
+          )}
+
+          {selectionKey === 'viewActivity' && (
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+              }}
+            >
+              <ViewActivity handleView={handleView} />
             </Content>
           )}
 

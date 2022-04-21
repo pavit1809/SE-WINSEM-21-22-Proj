@@ -15,8 +15,8 @@ const AddRecords = ({ handleAdd }) => {
         <ImgWrapper>
           <img src="/images/2.webp" alt="details" />
         </ImgWrapper>
-        <div class="description">
-          <div class="title">Add Records</div>
+        <div className="description">
+          <div className="title">Add Records</div>
           <div className="price">
             Add records by just a few click and enter a private vault we made
             just for you!
